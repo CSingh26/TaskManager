@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import '/Users/chaitanyasingh/Documents/Project/7/client/src/HomePage.css'
 
-const HomePage = () => {
+const HomePage = () => { 
     return (
       <div className="homepage">
         <nav className="navbar">
