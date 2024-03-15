@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
 import '/Users/chaitanyasingh/Documents/Project/7/client/src/HomePage.css'
+import Navbar from "../components/Navbar"
 
 const SignUp = () => {
     const [username, setUsername] = useState('')
@@ -16,14 +16,7 @@ const SignUp = () => {
 
     return (
         <div>
-            <nav className="navbar">
-                <Link to="/" className="logo">Taskify</Link>
-                <div className="nav-links">
-                    <Link to="/login">Login</Link>
-                    <Link to="/signup">Sign Up</Link>
-                    <Link to="/features">Features</Link>
-                </div>
-            </nav>
+            <Navbar />
         <div className="signup">
             <form onSubmit={handleSubmit}>
                 <div>
