@@ -4,14 +4,18 @@ import './LoginPage.css'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom';
 import LoginImg from '/Users/chaitanyasingh/Documents/Project/7/client/src/assests/team-checklist-concept-illustration/7495401.jpg'
+import axios from 'axios'
 
 const Login = () => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [data, setData] = useState({
+        username: '',
+        password: '',
+    });
     const navigate = useNavigate()
 
-    const handleSubmit = (event) => {
+    const loginUser = (event) => {
         event.preventDefault();
+        axios.get('/')
         navigate('/');
       };
 
@@ -24,7 +28,7 @@ const Login = () => {
                         <h2>Login</h2>
                         <h3>Dosen't Have an Account? <Link to='/signup' className="signup-link">Sign up</Link></h3>
                     </div>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={loginUser}>
                         <div className="username">
                             <div className="label">
                                 <label htmlFor="username">Username</label>
@@ -34,8 +38,8 @@ const Login = () => {
                                     className="user"
                                     type="text"
                                     placeholder="Username"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    value={data.username}
+                                    onChange={(e) => setData({...data, username: e.target.value})}
                                 />
                             </div>
                         </div>
@@ -49,8 +53,8 @@ const Login = () => {
                                     className="password"
                                     type="password"
                                     placeholder="Password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    value={data.password}
+                                    onChange={(e) => setData({...data, password: e.target.value})}
                                 />
                             </div>
                         </div>

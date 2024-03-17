@@ -3,17 +3,40 @@ import { useNavigate } from "react-router-dom"
 import './SignUp.css'
 import { Link } from 'react-router-dom';
 import Navbar from "../components/Navbar"
+import axios from 'axios'
+import {toast} from 'react-hot-toast'
 
 const SignUp = () => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [emailId, setEmailid] = useState('')
+    const [data, setData] = useState({
+        username: '',
+        email: '',
+        password: '',
+    });
     const navigate = useNavigate()
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        navigate('/login')
+        const {username, email, password} = data
+        try {
+            const {data} = await axios.post('/signup', {
+                username, email, password
+            })
+            if (data.error) {
+                toast.error(data.error)
+            } else {
+                setData({ username: '', email: '', password: '' })
+                toast.success('Registration Successful! Welcome')
+                navigate('/login')
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setData({ ...data, [name]: value });
+    };
 
     return (
         <div>
@@ -34,8 +57,8 @@ const SignUp = () => {
                                     className="signup-user"
                                     type="text"
                                     placeholder="Username"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    value={data.username}
+                                    onChange={(e) => setData({...data, username: e.target.value})}
                                 />
                             </div>
                         </div>
@@ -46,10 +69,10 @@ const SignUp = () => {
                             <div className="signup-input">
                                 <input 
                                     className="signup-email"
-                                    type="text"
+                                    type="email"
                                     placeholder="Email Address"
-                                    value={emailId}
-                                    onChange={(e) => setEmailid(e.target.value)}
+                                    value={data.email}
+                                    onChange={(e) => setData({...data, email: e.target.value})}
                                 />
                             </div>
                         </div>
@@ -62,8 +85,8 @@ const SignUp = () => {
                                     className="signup-password"
                                     type="password"
                                     placeholder="Password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    value={data.password}
+                                    onChange={(e) => setData({...data, password: e.target.value})}
                                 />
                             </div>
                         </div>
