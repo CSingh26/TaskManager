@@ -1,7 +1,6 @@
-// src/components/Navbar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '/Users/chaitanyasingh/Documents/Project/7/client/src/HomePage.css'
+import './Navbar.css'
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
 

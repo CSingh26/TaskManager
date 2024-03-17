@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import '/Users/chaitanyasingh/Documents/Project/7/client/src/HomePage.css'
+import './SignUp.css'
+import { Link } from 'react-router-dom';
 import Navbar from "../components/Navbar"
 
 const SignUp = () => {
@@ -11,46 +12,67 @@ const SignUp = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        navigate('/')
+        navigate('/login')
     }
 
     return (
         <div>
             <Navbar />
-        <div className="signup">
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="username">Username</label>
-                    <input 
-                        id="username"
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+            <div className="signup-page">
+                <div className="signup-form">
+                    <div className="signup-heading">
+                        <h2>Register</h2>
+                        <h3>Already Have an Account? <Link to='/login' className="login-link">Login</Link></h3>
+                    </div>
+                    <form onSubmit={handleSubmit}>
+                        <div className="signup-username">
+                            <div className="signup-label">
+                                <label htmlFor="username">Username</label>
+                            </div>
+                            <div className="signup-input">
+                                <input 
+                                    className="signup-user"
+                                    type="text"
+                                    placeholder="Username"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div className="email">
+                            <div className="signup-label">
+                                <label htmlFor="emailid">Email-Id</label>
+                            </div>
+                            <div className="signup-input">
+                                <input 
+                                    className="signup-email"
+                                    type="text"
+                                    placeholder="Email Address"
+                                    value={emailId}
+                                    onChange={(e) => setEmailid(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div className="singup-pwd">
+                            <div className="signup-label">
+                                <label htmlFor="password">Password</label>
+                            </div>
+                            <div className="signup-input">
+                                <input 
+                                    className="signup-password"
+                                    type="password"
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div className="btn">
+                            <button type="submit" className="submit-btn">Sign up</button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <label htmlFor="emailId">Email-ID</label>
-                    <input
-                        id="emailid"
-                        type="text"
-                        value={emailId}
-                        onChange={(e) => setEmailid(e.target.value)}
-                    />
-                </div>
-                <div>
-                <label htmlFor="password">Password</label>
-                    <input 
-                        id="password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button type="submit">
-                    SignUp
-                </button>
-            </form>
-        </div>
+            </div>   
         </div>
         
     )

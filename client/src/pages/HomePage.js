@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from '../components/Navbar'
-import '/Users/chaitanyasingh/Documents/Project/7/client/src/HomePage.css'
+import './HomePage.css'
 
 const HomePage = () => { 
     return (
       <div className="homepage">
         <Navbar />
-        <main className="main-content">
+        <main className="main">
           <h1>Welcome to Our Task Manager</h1>
           <p>Some image or video of working of this webapp.</p>
           {/* Replace with actual image or video */}

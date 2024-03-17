@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import '/Users/chaitanyasingh/Documents/Project/7/client/src/LoginPage.css'
+import './LoginPage.css'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom';
 import LoginImg from '/Users/chaitanyasingh/Documents/Project/7/client/src/assests/team-checklist-concept-illustration/7495401.jpg'
