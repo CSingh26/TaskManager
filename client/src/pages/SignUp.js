@@ -11,32 +11,29 @@ const SignUp = () => {
         username: '',
         email: '',
         password: '',
-    });
+    })
+
     const navigate = useNavigate()
 
-    const handleSubmit = async (event) => {
+    const registerUser = async (event) => {
         event.preventDefault();
         const {username, email, password} = data
         try {
-            const {data} = await axios.post('/signup', {
+            const {data} = await axios.post('/register', {
                 username, email, password
             })
             if (data.error) {
                 toast.error(data.error)
             } else {
-                setData({ username: '', email: '', password: '' })
-                toast.success('Registration Successful! Welcome')
+                setData()
+                toast.success('Registration Successful. Welcome!')
                 navigate('/login')
             }
         } catch (error) {
             console.log(error)
         }
+        
     }
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setData({ ...data, [name]: value });
-    };
 
     return (
         <div>
@@ -47,7 +44,7 @@ const SignUp = () => {
                         <h2>Register</h2>
                         <h3>Already Have an Account? <Link to='/login' className="login-link">Login</Link></h3>
                     </div>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={registerUser}>
                         <div className="signup-username">
                             <div className="signup-label">
                                 <label htmlFor="username">Username</label>

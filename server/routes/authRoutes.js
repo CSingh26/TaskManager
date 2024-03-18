@@ -6,11 +6,11 @@ const {test, registerUser} = require('../controllers/authControllers')
 router.use(
     cors({
         credentials: true,
-        origin: 'https://localhost:3000'
+        origin: 'http://localhost:3000'
     })
 )
 
 router.get('/', test)
-router.post('/signup', registerUser)
+router.post('/register', registerUser)
 
 module.exports = router

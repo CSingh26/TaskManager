@@ -16,7 +16,7 @@ const Navbar = () => {
           <Link to="/login" className="nav-link" onClick={handleToggle}>Login</Link>
         </li>
         <li className="nav-item">
-          <Link to="/signup" className="nav-link" onClick={handleToggle}>SignUp</Link>
+          <Link to="/register" className="nav-link" onClick={handleToggle}>SignUp</Link>
         </li>
         <li className="nav-item">
           <Link to="/features" className="nav-link" onClick={handleToggle}>Features</Link>

@@ -26,7 +26,7 @@ const Login = () => {
                 <div className="login-form">
                     <div className="headings">
                         <h2>Login</h2>
-                        <h3>Dosen't Have an Account? <Link to='/signup' className="signup-link">Sign up</Link></h3>
+                        <h3>Dosen't Have an Account? <Link to='/register' className="signup-link">Sign up</Link></h3>
                     </div>
                     <form onSubmit={loginUser}>
                         <div className="username">

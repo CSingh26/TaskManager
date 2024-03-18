@@ -7,18 +7,19 @@ import './App.css';
 import axios from 'axios'
 import  { Toaster } from 'react-hot-toast'
 
-axios.defaults.baseURL = "http://localhost:3000"
+axios.defaults.baseURL = "http://localhost:2000"
 axios.defaults.withCredentials = true
 
 function App() {
   return (
     <>
-    <Toaster position='bottom-right' toastOptions={{duration: 2000}}></Toaster><Router>
+    <Toaster position='bottom-right' toastOptions={{duration: 2000}}></Toaster>
+    <Router>
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/register" element={<SignUp />}></Route>
         </Routes>
       </div>
     </Router></>

@@ -1,5 +1,4 @@
 const User = require('../models/user')
-const exist = false
 
 const test = (req, res) => {
     res.json('test is working')
@@ -8,18 +7,17 @@ const test = (req, res) => {
 const registerUser = async (req, res) => {
     try {
         const {username, email, password} = req.body
-        exist = await User.findOne(username) 
-        if (exist) {
+        if (!username) {
             return res.json({
-                error: 'Username is already taken'
+                error: 'Please enter a username'
             })
         }
         if(!password || password.length < 6) {
             return res.json({
-                error: 'Password is required and should be 6 characters long'
+                error: 'Please enter a 6 character long password'
             })
         }
-        exist = await User.findOne(email)
+        const exist = await User.findOne({ email })
         if (exist) {
             return res.json({
                 error: 'Email is already an account realted to'
