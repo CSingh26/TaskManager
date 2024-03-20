@@ -2,6 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv').config()
 const cors = require('cors')
 const {mongoose} = require('mongoose')
+const cookieParser = require('cookie-parser')
 
 const app = express()
 
@@ -15,9 +16,12 @@ app.use('/', require('./routes/authRoutes'))
 
 const corsOptions ={
     origin:'http://localhost:3000', 
-    credentials:true,            //access-control-allow-credentials:true
+    credentials:true,            
     optionSuccessStatus:200
 }
+
+app.use(cookieParser())
+app.use(express.urlencoded({extended: false}))
 
 app.use(cors(corsOptions));
 

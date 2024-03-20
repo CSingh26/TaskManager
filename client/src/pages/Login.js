@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom';
 import LoginImg from '/Users/chaitanyasingh/Documents/Project/7/client/src/assests/team-checklist-concept-illustration/7495401.jpg'
 import axios from 'axios'
+import {toast} from 'react-hot-toast'
 
 const Login = () => {
     const [data, setData] = useState({
@@ -13,10 +14,24 @@ const Login = () => {
     });
     const navigate = useNavigate()
 
-    const loginUser = (event) => {
+    const loginUser = async (event) => {
         event.preventDefault();
-        axios.get('/')
-        navigate('/');
+        const {username, password} = data
+        try {
+            const {data} = await axios.post('/login', {
+                username, 
+                password
+            })
+
+            if (data.error) {
+                toast.error(data.error)
+            } else {
+                setData({})
+                navigate('/')
+            }
+        } catch (error) {
+            
+        }
       };
 
     return (
