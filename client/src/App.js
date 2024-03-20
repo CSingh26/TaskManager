@@ -6,23 +6,25 @@ import SignUp from './pages/SignUp'
 import './App.css';
 import axios from 'axios'
 import  { Toaster } from 'react-hot-toast'
+import { UserContextProvider } from './context/userContext';
 
 axios.defaults.baseURL = "http://localhost:2000"
 axios.defaults.withCredentials = true
 
 function App() {
   return (
-    <>
-    <Toaster position='bottom-right' toastOptions={{duration: 2000}}></Toaster>
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<SignUp />}></Route>
-        </Routes>
-      </div>
-    </Router></>
+    <UserContextProvider>
+      <Toaster position='bottom-right' toastOptions={{duration: 2000}}></Toaster>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<SignUp />}></Route>
+          </Routes>
+        </div>
+      </Router>
+    </UserContextProvider>
   );
 }
 

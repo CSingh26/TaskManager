@@ -5,6 +5,7 @@ const {mongoose} = require('mongoose')
 const cookieParser = require('cookie-parser')
 
 const app = express()
+app.use(cookieParser())
 
 mongoose.connect(process.env.MONGO_URL)
 .then(() => console.log('Database Connected'))
@@ -20,7 +21,7 @@ const corsOptions ={
     optionSuccessStatus:200
 }
 
-app.use(cookieParser())
+
 app.use(express.urlencoded({extended: false}))
 
 app.use(cors(corsOptions));
