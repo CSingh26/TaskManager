@@ -1,34 +1,35 @@
-// UserContext.js
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from "axios"
+import { createContext, useState, useEffect } from "react"
 
-const UserContext = createContext();
+export const UserContext = createContext({})
 
-export const useUser = () => useContext(UserContext);
-
-export const UserContextProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-
+export function UserContextProvider({children}) {
+    const [user, setUser] = useState(null)
+    const isAuth = () => {
+        return !!user
+    }
     useEffect(() => {
-        axios.get('/profile').then(response => {
-            setUser(response.data.user); // Adjust according to the response structure
-        }).catch(error => {
-            console.log(error);
-            setUser(null);
-        });
-    }, []);
+        if(!user) {
+            axios.get('/profile').then(({data}) => {
+                setUser(data)
+            })
+        }
+    }, [])
 
-    const logout = () => {
-        // Implement logout functionality
-        axios.post('/logout').then(() => {
+    const logout = async () => {
+        try {
+            await axios.post('/logout');
             setUser(null);
-            // Redirect or perform additional actions as needed
-        });
-    };
+
+
+        } catch (error) {
+            console.error("Logout failed", error);
+        }
+    }
 
     return (
-        <UserContext.Provider value={{ user, setUser, logout }}>
+        <UserContext.Provider value={{user, setUser, isAuth, logout}}>
             {children}
         </UserContext.Provider>
-    );
-};
+    )
+}
