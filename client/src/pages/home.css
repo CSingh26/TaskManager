@@ -1,0 +1,26 @@
+* {
+    font-family: "Wix Madefor Display", serif;
+}
+
+.heading-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    width: auto;
+}
+
+#main-heading {
+    font-size: 100px;
+}
+
+.heading-cont h2, h3 {
+    font-size: 58px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.heading-cont {
+    color: #e830d6;
+}

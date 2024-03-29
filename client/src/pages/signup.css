@@ -1,0 +1,105 @@
+.main-body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: row;
+    height: 85vh;
+    width: 50vw;
+    padding: 20px;
+    margin: 50px;
+    gap: 80px;
+    align-items: center;
+    background-color: rgba(139, 194, 254, 0.59);
+    border: 2px solid rgba(0,0,0,0);
+    border-radius: 25px;
+}
+
+#img-area {
+    width: 600px;
+    padding-left: 30px;
+}
+
+.form-area {
+    display: flex;
+}
+
+.main-heading {
+    font-size: 40px;
+    text-align: center;
+    color: #e830d6;
+}
+
+.sub-heading {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #e830d6;
+}
+
+.signup {
+    text-align: center;
+    padding-top: 12px;
+}
+
+.email-id {
+    padding-bottom: 10px;
+}
+
+.email-id input {
+    width: 100%;
+    height: 45px;
+    padding-left: 12px;
+    border-radius: 6px;
+    border: 3px solid rgba(255, 255, 255, 0);
+}
+
+.username {
+    padding-bottom: 10px;
+}
+
+.username input {
+    width: 100%;
+    height: 45px;
+    padding-left: 12px;
+    border-radius: 6px;
+    border: 3px solid rgba(255, 255, 255, 0);
+}
+
+.pwd {
+    padding-bottom: 15px;
+}
+
+.pwd input {
+    width: 100%;
+    height: 45px;
+    padding-left: 12px;
+    padding-right: 40px;
+    border-radius: 6px;
+    border: 3px solid rgba(255, 255, 255, 0);
+
+}
+
+.submit-btn button {
+    width: 100%;
+    height: 45px;
+    border-radius: 7px;
+    border: 3px solid rgba(255, 255, 255, 0);
+    background-color: #f79d71;
+    font-weight: 700;
+    color: white;
+    transition: 0.7s ease;
+}
+
+.submit-btn button:hover {
+     background-color: rgb(248, 113, 46);
+     box-shadow: 0 12px 16px 0 rgba(234, 135, 86, 0.22);
+}
+
+   
