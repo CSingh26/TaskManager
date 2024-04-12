@@ -6,15 +6,26 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { useState } from "react";
 import Lottie from "lottie-react"
 import animationData from '../assets/Animation - 1711631808560.json'
+import useLogin from "../hooks/userLogin";
 
 const LoginPage = () => {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
+
+    const  { loginUser } = useLogin()
 
     const [showPassword, setShowPassword] = useState(false);
 
-    const ToggleShowPassword = () => {
-        setShowPassword(!showPassword);
-    };
+    const [data, setData] = useState({
+        username: '',
+        password: ''
+    })
+
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        await loginUser(data)
+        // navigate('/')
+    }
+
     return (
         <>
         <Navbar />
@@ -28,16 +39,21 @@ const LoginPage = () => {
                         <h1 className="main-heading">Hello Again!</h1>
                         <br />
                         <h3 className="sub-heading">Welcome Back you've been missed!</h3>
-                        <form action="" className="login">
+                        <form onClick={handleLogin} className="login">
                             <div className="username">
                                 <input 
                                 type="text" 
-                                placeholder="Enter Username"/>
+                                placeholder="Enter Username"
+                                value={data.username}
+                                onChange={(e) => setData({...data, username:e.target.value})}
+                                />
                             </div>
                             <div className="pwd">
                                 <input 
                                 type={showPassword ? "text" : "password"}
                                 placeholder="Password"
+                                value={data.password}
+                                onChange={(e) => setData({...data, password:e.target.value})}
                                 />
                                 {/* <span className="toggle-password" onClick={ToggleShowPassword}>
                                     {showPassword ? <FaEyeSlash /> : <FaEye />}

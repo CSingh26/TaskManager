@@ -2,12 +2,12 @@ import { useState } from "react"
 import { UseAuth } from "../context/AuthContext.jsx"
 import { message } from 'antd'
 
-const useSignup = () => {
+const useLogin = () => {
     const { login } = UseAuth()
 
-    const registerUser = async (values) => {
+    const loginUser = async (values) => {
         try {
-            const res = await fetch('http://localhost:2300/api/auth/signup', {
+            const res = await fetch('http://localhost:2300/api/auth/login', {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json'
@@ -22,14 +22,14 @@ const useSignup = () => {
             } else if(res.status === 400) {
                 message.error(data.message)
             } else {
-                message.error('Registration failed')
+                message.error('Login failed')
             }
         } catch (error) {
             message.error(error)
         } 
     }
 
-    return { registerUser }
+    return { loginUser }
 }
 
-export default useSignup
+export default useLogin

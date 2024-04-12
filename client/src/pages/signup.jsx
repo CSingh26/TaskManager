@@ -10,7 +10,7 @@ const Signup = () => {
 
     const { registerUser } = useSignup()
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const [data, setData] = useState({
         username: '',
@@ -21,7 +21,7 @@ const Signup = () => {
     const handleRegister = async (e) => {
         e.preventDefault()
         await registerUser(data)
-        navigate('/login')
+        // navigate('/login')
     }
 
     return (
@@ -37,8 +37,7 @@ const Signup = () => {
                         <h1 className="main-heading">Hey There!</h1>
                         <br />
                         <h3 className="sub-heading">Signup to expand your horizon</h3>
-                        <form onSubmit={handleRegister()} className="signup">
-                            {/* form inputs */}
+                        <form onSubmit={handleRegister} className="signup">
                             <div className="email-id">
                                 <input 
                                 type="email" 
